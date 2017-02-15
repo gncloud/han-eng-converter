@@ -24,7 +24,11 @@ public class HanToAlpha {
 				convertString += KORJUNKEYTOENG[jun];
 				if(!KORJONKEYTOENG[jon].equalsIgnoreCase(""))
 					convertString += KORJONKEYTOENG[jon];
-			}			
+			}else if(hanChar == 32){
+				convertString += " ";
+			}else if(hanChar > 122 && hanChar <0xAC00){
+
+			}
 		}
 		return convertString;
 	}
