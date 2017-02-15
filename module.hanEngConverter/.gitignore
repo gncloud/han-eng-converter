@@ -9,3 +9,6 @@ out
 gen
 test
 target
+.classpath
+.project
+.settings
