@@ -17,6 +17,9 @@ public class AlphaToHanTest {
 		assertEquals("가나다라마바사", ath.alphaToHan("rkskekfkakqktk"));
 		assertEquals("안녕 하세요", ath.alphaToHan("dkssud gktpdy"));
 		assertEquals("까르뽀나라", ath.alphaToHan("RkfmQhskfk"));
+		assertEquals("강남", ath.alphaToHan("ㄱ ㅏ ㅇ 나 ㅁ"));
+		assertEquals("", ath.alphaToHan(""));
+		assertEquals("ㄱㄴㅁㄴㅇ/ㄹ다라", ath.alphaToHan("ㄱㄴasd/f다라"));
 
 		//한글 알파벳 변환 테스트
 		assertEquals("gksrmf",hta.hanToAlpha("한글"));
