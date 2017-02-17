@@ -31,7 +31,6 @@ public class AlphaToHanAll {
     }
 
     public String alphaToHanAll(String engString){ // 최종 변환값 스트링 형태로 리턴해주는 메소드
-        String convertString = "";
         int choCode = 0, junCode = 0, jonCode = 0;
         int tempJunCode, tempJonCode;
         StringBuffer result = new StringBuffer();
