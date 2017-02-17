@@ -41,7 +41,7 @@ public class AlphaToHanAll {
             if(i+1 < engString.length()){
                 temp_match_next = JUNSTR.indexOf(engString.charAt(i+1));
             }else{
-                temp_match_next = 0;
+                temp_match_next = JUNSTR.indexOf(engString.charAt(i));
             }
 
             if(temp_match == -1 || temp_match_next <= -1){

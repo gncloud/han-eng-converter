@@ -22,7 +22,7 @@ public class AlphaToHanTest {
 //		assertEquals("강남", ath.alphaToHan("ㄱ ㅏ ㅇ 나 ㅁ"));
 		assertEquals("", ath.alphaToHan(""));
 //		assertEquals("ㄱㄴㅁㄴㅇ/ㄹ다라", ath.alphaToHan("rsasd/fekfk"));
-		assertEquals("ㄱㄴㄷㄹ",atha.alphaToHanAll("rsef"));
+		assertEquals("rsef",atha.alphaToHanAll("rsef"));
 
 		//한글 알파벳 변환 테스트
 		assertEquals("gksrmf",hta.hanToAlpha("한글"));
