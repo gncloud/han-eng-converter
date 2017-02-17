@@ -27,7 +27,7 @@ public class AlphaToHanAll {
 
     public static void main(String[] args){
         AlphaToHanAll atha = new AlphaToHanAll();
-        System.out.print(atha.alphaToHanAll("rsef"));
+        System.out.println(atha.alphaToHanAll("rk o/kjespgmlzoxckjv"));
     }
 
     public String alphaToHanAll(String engString){ // 최종 변환값 스트링 형태로 리턴해주는 메소드
@@ -36,6 +36,10 @@ public class AlphaToHanAll {
         StringBuffer result = new StringBuffer();
         
         for(int i = 0; i<engString.length();i++){
+            if(engString.substring(i,i+1).equals(" ")){
+                result.append(" ");
+                i++;
+            }
             int temp_match = CHOSTR.indexOf(engString.charAt(i));
             int temp_match_next = -1;
             if(i+1 < engString.length()){
@@ -165,6 +169,4 @@ public class AlphaToHanAll {
         }
         return -1;
     }
-
-
 }
