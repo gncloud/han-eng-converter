@@ -27,7 +27,7 @@ public class AlphaToHanAll {
 
     public static void main(String[] args){
         AlphaToHanAll atha = new AlphaToHanAll();
-        System.out.println(atha.alphaToHanAll("rk o/kjespgmlzoxckjv"));
+        System.out.println(atha.alphaToHanAll("가rk o/kj나다pgmlzoxckjv"));
     }
 
     public String alphaToHanAll(String engString){ // 최종 변환값 스트링 형태로 리턴해주는 메소드

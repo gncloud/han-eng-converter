@@ -14,23 +14,30 @@ import java.io.FileNotFoundException;
  * Created by gncloud on 2017-02-16.
  */
 public class DicSearch {
-    public static void main(String[] args){
-        long start = System.currentTimeMillis();
 
+    private static void search(String keyword){
+        long start = System.currentTimeMillis();
         try {
             JWNL.initialize(new FileInputStream("./dic/file_properties.xml"));
             Dictionary dic = Dictionary.getInstance();
-            System.out.println(dic.getIndexWord(POS.NOUN, "name"));
-
-
-
-            long end = System.currentTimeMillis();
-            System.out.println( "실행 시간 : " + ( end - start )/1000.0 );
-
+            for(int i = 0; i<10000; i++){
+                System.out.println(dic.getIndexWord(POS.NOUN, keyword));
+                System.out.println(dic.getIndexWord(POS.ADVERB,keyword));
+                System.out.println(dic.getIndexWord(POS.NOUN,keyword));
+                System.out.println(dic.getIndexWord(POS.ADJECTIVE,keyword));
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (JWNLException e){
             e.printStackTrace();
         }
+        long end = System.currentTimeMillis();
+        System.out.println( "실행 시간 : " + ( end - start )/1000.0 );
+    }
+
+    public static void main(String[] args){
+        DicSearch ds = new DicSearch();
+        ds.search("beautiful");
+
     }
 }
