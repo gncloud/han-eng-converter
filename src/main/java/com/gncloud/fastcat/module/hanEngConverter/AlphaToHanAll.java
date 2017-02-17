@@ -27,7 +27,7 @@ public class AlphaToHanAll {
 
     public static void main(String[] args){
         AlphaToHanAll atha = new AlphaToHanAll();
-        System.out.print(atha.alphaToHanAll("rkskekfaq"));
+        System.out.print(atha.alphaToHanAll("rsef"));
     }
 
     public String alphaToHanAll(String engString){ // 최종 변환값 스트링 형태로 리턴해주는 메소드
@@ -35,14 +35,14 @@ public class AlphaToHanAll {
         int choCode = 0, junCode = 0, jonCode = 0;
         int tempJunCode, tempJonCode;
         StringBuffer result = new StringBuffer();
-
+        
         for(int i = 0; i<engString.length();i++){
             int temp_match = CHOSTR.indexOf(engString.charAt(i));
             int temp_match_next = -1;
             if(i+1 < engString.length()){
                 temp_match_next = JUNSTR.indexOf(engString.charAt(i+1));
             }else{
-                temp_match_next = JUNSTR.indexOf(engString.charAt(i));
+                temp_match_next = 0;
             }
 
             if(temp_match == -1 || temp_match_next <= -1){
