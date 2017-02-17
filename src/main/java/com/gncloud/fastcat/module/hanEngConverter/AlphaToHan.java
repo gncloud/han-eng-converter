@@ -12,7 +12,7 @@ public class AlphaToHan {
 		StringBuffer result = new StringBuffer();
 		
 		for( int i = 0; i < engString.length(); i++){
-			
+
 			if(engString.substring(i,i+1).equalsIgnoreCase(" ")){
 				result.append(" ");
 				i++;

@@ -18,9 +18,7 @@ public class AutoConverterTest {
         //assertEquals("남성가방", converter.test("남성가qkd"));
 
 
-
         /*
-
             쉽게 생각.
             0. 한글조합(초+중+종)이 안된다면? 그부분만 영문변환시도.
             1. 영문이 사전에 없다면, 좌우에 영문을 붙여서 다시시도. 그 영문으로 한글변환시도.
