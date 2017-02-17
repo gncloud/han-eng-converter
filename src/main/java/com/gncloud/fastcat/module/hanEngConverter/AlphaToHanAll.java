@@ -35,10 +35,7 @@ public class AlphaToHanAll {
         int choCode = 0, junCode = 0, jonCode = 0;
         int tempJunCode, tempJonCode;
         StringBuffer result = new StringBuffer();
-
-        //todo . 1 초성, 중성, 종성 값 체크
-        //todo . 2 초성문자열에 매칭되면 다음값을 중성 매칭으로
-
+        
         for(int i = 0; i<engString.length();i++){
             int temp_match = CHOSTR.indexOf(engString.charAt(i));
             int temp_match_next = -1;
