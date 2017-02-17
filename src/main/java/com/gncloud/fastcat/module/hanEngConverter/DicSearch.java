@@ -20,10 +20,10 @@ public class DicSearch {
         try {
             JWNL.initialize(new FileInputStream("./dic/file_properties.xml"));
             Dictionary dic = Dictionary.getInstance();
-            for(int i = 0; i<10000; i++){
+            for(int i = 0; i<100; i++){
                 System.out.println(dic.getIndexWord(POS.NOUN, keyword));
-                System.out.println(dic.getIndexWord(POS.ADVERB,keyword));
-                System.out.println(dic.getIndexWord(POS.NOUN,keyword));
+                System.out.println(dic.getIndexWord(POS.ADVERB,"pretty"));
+                System.out.println(dic.getIndexWord(POS.VERB,"run"));
                 System.out.println(dic.getIndexWord(POS.ADJECTIVE,keyword));
             }
         } catch (FileNotFoundException e) {
