@@ -29,7 +29,7 @@ public class AlphaToHanAll {
         AlphaToHanAll atha = new AlphaToHanAll();
 //        System.out.println(atha.alphaToHanAll("가rk o/kj나다pgmlzoxckjv"));
 //        System.out.println(atha.alphaToHanAll("adidas"));
-        System.out.println(atha.alphaToHanAll("annrel"));
+        System.out.println(atha.alphaToHanAll("akk"));
     }
 
     public String alphaToHanAll(String engString){ // 최종 변환값 스트링 형태로 리턴해주는 메소드
@@ -38,15 +38,15 @@ public class AlphaToHanAll {
         StringBuffer result = new StringBuffer();
         
         for(int i = 0; i<engString.length();i++){
-            int temp_match = CHOSTR.indexOf(engString.charAt(i));
-            int temp_match_next = i<= engString.length() ? JUNSTR.indexOf(engString.charAt(i+1)):-1;
 
             if(engString.substring(i,i+1).isEmpty()){
                 result.append(" ");
                 i++;
             }
+            int temp_match = CHOSTR.indexOf(engString.charAt(i));
+            int temp_match_next = i <= engString.length() ? JUNSTR.indexOf(engString.substring(i+1,i+2)):-1;
 
-            if(temp_match == -1 || temp_match_next <= -1){
+            if(temp_match == -1 || temp_match_next == -1){
                 result.append(!engString.substring(i,i+1).isEmpty() ? engString.substring(i,i+1):"");
             }else{
                 choCode = getCode(CodeType.chosung, engString.substring(i, i + 1));
@@ -57,29 +57,33 @@ public class AlphaToHanAll {
                     junCode = tempJunCode;
                     i += 2;
                 }else {
-                    junCode = getSingleJun(i, engString);
-                    i++;
-                }
-
-                tempJonCode = getDoubleJon(i,engString);
-                if(tempJonCode != -1){
-                    jonCode = tempJonCode;
-                    tempJunCode = getSingleJun(i + 2, engString);
-                    if(tempJunCode != -1){
-                        jonCode = getSingleJon(i, engString);
+                    if(getSingleJun(i, engString) == -1){
+                        result.append(junCode);
                     }else{
+                        junCode = getSingleJun(i, engString);
                         i++;
-                    }
-                }else{
-                    tempJunCode = getSingleJun(i + 1 , engString);
 
-                    if(tempJunCode != -1){
-                        jonCode = 0;
-                        i --;
-                    }else {
-                        jonCode = getSingleJon(i, engString);
-                        if(jonCode == -1)
-                            jonCode = 0;
+                        tempJonCode = getDoubleJon(i,engString);
+                        if(tempJonCode != -1){
+                            jonCode = tempJonCode;
+                            tempJunCode = getSingleJun(i + 2, engString);
+                            if(tempJunCode != -1){
+                                jonCode = getSingleJon(i, engString);
+                            }else{
+                                i++;
+                            }
+                        }else{
+                            tempJunCode = getSingleJun(i + 1 , engString);
+
+                            if(tempJunCode != -1){
+                                jonCode = 0;
+                                i--;
+                            }else {
+                                jonCode = getSingleJon(i, engString);
+                                if(jonCode == -1)
+                                    jonCode = 0;
+                            }
+                        }
                     }
                 }
                 result.append((char) (0xAC00 + choCode + junCode + jonCode));
@@ -88,7 +92,7 @@ public class AlphaToHanAll {
         return result.toString();
     }
 
-    private int getDoubleJon(int idx, String engString){
+    private int getDoubleJon(int idx, String engString) {
         int result;
         if((idx + 2)>engString.length()){
             return -1;
@@ -115,7 +119,7 @@ public class AlphaToHanAll {
         if((idx + 2)>engString.length()){
             return -1;
         }else{
-            result = getCode(CodeType.jungsung, engString.substring(idx, idx+2).toLowerCase());
+            result = getCode(CodeType.jungsung, engString.substring(idx, idx+2));
             if(result != -1){
                 return result;
             }else{
@@ -126,7 +130,7 @@ public class AlphaToHanAll {
 
     private int getSingleJun(int idx, String engString){
         if((idx + 1 ) <= engString.length()){
-            return getCode(CodeType.jungsung, engString.substring(idx, idx +1));
+            return getCode(CodeType.jungsung, engString.substring(idx, idx +1)) > 0 ? getCode(CodeType.jungsung, engString.substring(idx, idx +1)):-1;
         }else{
             return -1;
         }
