@@ -25,7 +25,7 @@ public class AlphaToHanFinal {
 
     public static void main(String[] args){
         AlphaToHanFinal athf = new AlphaToHanFinal();
-        System.out.println(athf.alphaTohan(""));
+        System.out.println(athf.alphaTohan("channel"));
     }
 
     private String completeCombine(String cho, String jun, String jon){
@@ -53,8 +53,46 @@ public class AlphaToHanFinal {
 
     public String alphaTohan(String keyword){
         String convertString = "";
-        int tempType = 0;
+        int nCho = -1, nJun = -1, nJon = -1;
 
+        for( int i = 0; i<keyword.length();i++){
+            char ch = keyword.charAt(i);
+            int p = ENG_KEY.indexOf(ch);
+            if(p == -1){
+                if(nCho != -1){
+                    if(nJun != -1){
+                        convertString += completeCombine(
+                                Character.toString((char) nCho),
+                                Character.toString((char) nJun),
+                                Character.toString((char) nJon));
+                    }else{
+                        convertString += KORCHOKEYTOENG[nCho];
+                    }
+                } else {
+                    if(nJun != -1){
+                        convertString += KORJUNKEYTOENG[nJun];
+                    }else if(nJon != -1){
+                        convertString += KORJONKEYTOENG[nJon];
+                    }
+                }
+                nCho = -1;
+                nJun = -1;
+                nJon = -1;
+            }else if( p < 19){ // 자음
+                if (nJun != -1){
+                    if(nCho == -1){
+                        convertString += KORJUNKEYTOENG[nJun];
+                        nJun = -1;
+                        for(int k = 0; k<KORCHOKEYTOENG.length;k++){
+
+                        }
+
+                    }else{
+
+                    }
+                }
+            }
+        }
 
         return convertString;
     }
