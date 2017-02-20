@@ -72,6 +72,7 @@ public class DicSearch {
 
     public static void main(String[] args){
         DicSearch ds = new DicSearch();
-        ds.search("computer");
+//        ds.search("nike");
+        System.out.println(ds.searchResultCount("adidas"));
     }
 }

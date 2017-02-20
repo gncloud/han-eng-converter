@@ -41,24 +41,20 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
         String convertAlpha = hta.hanToAlpha(keyword);
         String convertHan = atha.alphaToHanAll(keyword);
 
-        ds.searchResultCount(keyword);
+        int searchRes = ds.searchResultCount(convertAlpha);
 
-        int i = 0;
-
-        boolean engFlag = true;
-        // 입력된 키워드에 대한 영문 변환 사전검색은 한번만 하도록
-        // hanToAlpha
-
-        while (i < keyword.length()){
-            char tempChar = keyword.charAt(i);
-            if(tempChar >= 0xAC00 && tempChar <= 0xD7AF){ //완성형 한글
-                convertString = hta.hanToAlpha(keyword);
-            }else if(tempChar >= 0x3131 && tempChar <= 0x318E){
-                convertString = atha.alphaToHanAll(keyword);
-            }else{
-                convertString = hta.hanToAlpha(keyword);
-            }
+        switch (searchRes){
+            case -1 :
+                convertString = "사전검색 오류";
+                break;
+            case 0 : //검색결과 없음, 매칭되는 사전 검색없음
+                break;
+            case 1 :
+                break;
+            default:
+                break;
         }
+
         return convertString;
     }
     private String hanToEng(String keyword){
