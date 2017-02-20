@@ -13,14 +13,15 @@ import java.io.FileNotFoundException;
 /**
  * Created by gncloud on 2017-02-16.
  */
+
 public class DicSearch {
 
-    private static void search(String keyword){
+    public static void search(String keyword){
         long start = System.currentTimeMillis();
         try {
-            JWNL.initialize(new FileInputStream("./dic/file_properties.xml"));
-            Dictionary dic = Dictionary.getInstance();
-            for(int i = 0; i<100; i++){
+            for(int i = 0; i<1000; i++){
+                JWNL.initialize(new FileInputStream("./dic/file_properties.xml"));
+                Dictionary dic = Dictionary.getInstance();
                 System.out.println(dic.getIndexWord(POS.NOUN, keyword));
                 System.out.println(dic.getIndexWord(POS.ADVERB,"pretty"));
                 System.out.println(dic.getIndexWord(POS.VERB,"run"));
@@ -38,6 +39,5 @@ public class DicSearch {
     public static void main(String[] args){
         DicSearch ds = new DicSearch();
         ds.search("beautiful");
-
     }
 }
