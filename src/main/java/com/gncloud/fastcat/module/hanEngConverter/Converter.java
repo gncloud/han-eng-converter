@@ -36,17 +36,18 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
         String tempString = "";
         AlphaToHanAll atha = new AlphaToHanAll();
         HanToAlpha hta = new HanToAlpha();
+        DicSearch ds = new DicSearch();
 
         String convertAlpha = hta.hanToAlpha(keyword);
         String convertHan = atha.alphaToHanAll(keyword);
 
+        ds.searchResultCount(keyword);
+
         int i = 0;
 
         boolean engFlag = true;
-        //입력된 키워드에 대한 사전검색은 알파벳 변환후 한번만 하도록
-        //hanToAlpha
-
-
+        // 입력된 키워드에 대한 영문 변환 사전검색은 한번만 하도록
+        // hanToAlpha
 
         while (i < keyword.length()){
             char tempChar = keyword.charAt(i);
@@ -56,19 +57,14 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
                 convertString = atha.alphaToHanAll(keyword);
             }else{
                 convertString = hta.hanToAlpha(keyword);
-
             }
         }
-
         return convertString;
     }
-
     private String hanToEng(String keyword){
         return "";
     }
-
     private String engToHan(String keyword){
         return "";
     }
-
 }
