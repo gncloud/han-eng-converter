@@ -26,15 +26,6 @@ public class DicSearch {
             String resAdverb = dic.getIndexWord(POS.ADVERB, keyword) !=null? dic.getIndexWord(POS.ADVERB, keyword).toString():"";
             String resVerb = dic.getIndexWord(POS.VERB,keyword) != null? dic.getIndexWord(POS.VERB, keyword).toString():"";
 
-//            System.out.println("None length : " + resNone.length());
-//            System.out.println("Adjective length : "+resAdjective.length());
-//            System.out.println("Adverb length : "+resAdverb.length());
-//            System.out.println("Verb length : "+resVerb.length());
-
-            if(resNone.length() + resAdjective.length() + resAdverb.length() + resVerb.length() <= 0){
-
-            }
-
             long end = System.currentTimeMillis();
             System.out.println( "실행 시간 : " + ( end - start )/1000.0 );
         } catch (FileNotFoundException e) {
@@ -72,7 +63,7 @@ public class DicSearch {
 
     public static void main(String[] args){
         DicSearch ds = new DicSearch();
-//        ds.search("nike");
+        System.out.println(ds.searchResultCount("nike"));
         System.out.println(ds.searchResultCount("adidas"));
     }
 }
