@@ -23,44 +23,54 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
 
     public static void main(String[] args){
         Converter con = new Converter();
-        System.out.println(con.Converter("버qj리"));
+        System.out.println(con.Converter("ㅜㅑㅏㄷ"));
     }
 
-    // todo 1. 한글조합이 안된다면 그 부분만 영문변환 시도
-    // todo 2. 영문이 사전에 없다면 좌우에 영문을 붙혀서 다시 시도
-    // todo 3. 한글결과가 조합이 괜찮다면 그대로 사용.
-    // todo 4. 조합이 이상하면 버리고 기존 영문사용.
+    private int combineCheck(String keyword){
+        // 조합 안됨 return 0;
+        // 조합 가능 return 1;
+        AlphaToHan ath = new AlphaToHan();
+        String convertKeyword = ath.alphaTohan(keyword);
+
+        for(int i = 0; i<convertKeyword.length();i++){
+            if(convertKeyword.charAt(i) < 0xAC00 || convertKeyword.charAt(i) > 0xD7AF)
+                return 0;
+        }
+        return 1;
+    }
 
     public String Converter(String keyword){
         String convertString = "";
         String tempString = "";
-        AlphaToHanAll atha = new AlphaToHanAll();
+        AlphaToHan ath = new AlphaToHan();
         HanToAlpha hta = new HanToAlpha();
         DicSearch ds = new DicSearch();
 
         String convertAlpha = hta.hanToAlpha(keyword);
-        String convertHan = atha.alphaToHanAll(keyword);
+        String convertHan = ath.alphaTohan(keyword);
 
-        int searchRes = ds.searchResultCount(convertAlpha);
+        int searchRes = ds.searchResultCount(convertAlpha); // 알파벳 검색
 
         switch (searchRes){
             case -1 :
                 convertString = "사전검색 오류";
                 break;
             case 0 : // 매칭되는 사전 검색없음
-                break;
-            case 1 :
-                break;
+                if(combineCheck(convertHan) == 0){ //조합불가 글자가 포함
+                    return keyword;
+                }else{
+                    return convertHan;
+                }
+            case 1 : // 사전 검색 결과가 있음
+                if(combineCheck(convertHan) == 0){
+                    return convertAlpha;
+                }else{
+                    return convertAlpha;
+                }
             default:
                 break;
         }
-
         return convertString;
     }
-    private String hanToEng(String keyword){
-        return "";
-    }
-    private String engToHan(String keyword){
-        return "";
-    }
+
 }
