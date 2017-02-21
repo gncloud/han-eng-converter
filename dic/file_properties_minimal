@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jwnl_properties language="en">
     <version publisher="Princeton" number="3.0" language="en"/>
-    <dictionary class="net.didion.jwnl.dictionary.FileBackedDictionary">
+    <dictionary class="">
         <param name="dictionary_element_factory"
                value="net.didion.jwnl.princeton.data.PrincetonWN17FileDictionaryElementFactory"/>
         <param name="file_manager" value="net.didion.jwnl.dictionary.file_manager.FileManagerImpl">
