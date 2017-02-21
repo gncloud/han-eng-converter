@@ -23,10 +23,32 @@
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/net.sf.jwordnet/jwnl -->
+    <!--<dependency>-->
+      <!--<groupId>net.sf.jwordnet</groupId>-->
+      <!--<artifactId>jwnl</artifactId>-->
+      <!--<version>1.4_rc3</version>-->
+    <!--</dependency>-->
+
+    <!--<dependency>-->
+      <!--<groupId>net.sf.extjwnl</groupId>-->
+      <!--<artifactId>extjwnl</artifactId>-->
+      <!--<version>1.9.2</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>net.sf.extjwnl</groupId>-->
+      <!--<artifactId>extjwnl-data-wn31</artifactId>-->
+      <!--<version>1.2</version>-->
+    <!--</dependency>-->
+
     <dependency>
-      <groupId>net.sf.jwordnet</groupId>
-      <artifactId>jwnl</artifactId>
-      <version>1.4_rc3</version>
+      <groupId>net.sf.extjwnl</groupId>
+      <artifactId>extjwnl</artifactId>
+      <version>1.9.2</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.extjwnl</groupId>
+      <artifactId>extjwnl-data-wn31</artifactId>
+      <version>1.2</version>
     </dependency>
 
   </dependencies>

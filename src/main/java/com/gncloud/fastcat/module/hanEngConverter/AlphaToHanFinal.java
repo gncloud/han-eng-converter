@@ -2,6 +2,8 @@ package com.gncloud.fastcat.module.hanEngConverter;
 
 /**
  * Created by gncloud on 2017-02-20.
+ *
+ *
  */
 public class AlphaToHanFinal {
 
@@ -13,7 +15,7 @@ public class AlphaToHanFinal {
 
     public static void main(String[] args){
         AlphaToHanFinal athf = new AlphaToHanFinal();
-        System.out.println(athf.alphaTohan("channel"));
+        System.out.println(athf.alphaTohan("gkgmlgklv가나다 ㄱㄴㄷnalskjdf"));
     }
 
     private String makeHangul(int nCho, int nJung, int nJong){
@@ -208,9 +210,7 @@ public class AlphaToHanFinal {
                     nJung = -1;
                     res += KOR_KEY.charAt(p);
                 }
-
             }
-
         }
         // 마지막 한글이 있으면 처리
         if (nCho != -1) {
