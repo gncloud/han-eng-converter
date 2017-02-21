@@ -22,13 +22,13 @@ public class DicSearch {
         // 1 -> 검색결과 있음
 
         try{
-            FileInputStream inputStream = new FileInputStream("./dic/file_properties.xml");
-            Dictionary dictionary = Dictionary.getInstance(inputStream);
-
+            FileInputStream dicInputStream = new FileInputStream("./dic/file_properties.xml");
+            Dictionary dictionary = Dictionary.getInstance(dicInputStream);
             System.out.println(dictionary.getIndexWord(POS.NOUN, keyword));
 
+
             dictionary.close();
-            inputStream.close();
+            dicInputStream.close();
 
         }catch (FileNotFoundException e){
             e.printStackTrace();
