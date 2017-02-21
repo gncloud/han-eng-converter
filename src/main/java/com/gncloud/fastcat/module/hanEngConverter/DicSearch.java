@@ -8,6 +8,7 @@ import net.sf.extjwnl.dictionary.Dictionary;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Iterator;
 
 /**
@@ -26,11 +27,16 @@ public class DicSearch {
 
             System.out.println(dictionary.getIndexWord(POS.NOUN, keyword));
 
+            dictionary.close();
+            inputStream.close();
+
         }catch (FileNotFoundException e){
             e.printStackTrace();
         }catch (JWNLIOException e){
             e.printStackTrace();
         } catch (JWNLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

@@ -8,6 +8,7 @@ import net.sf.extjwnl.dictionary.Dictionary;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Iterator;
 
 /**
@@ -26,7 +27,10 @@ public class DicCustomInsert {
             Synset topmostSynset = synset.next();
             Pointer newPointer = new Pointer(PointerType.HYPONYM, topmostSynset, newSynset);
             topmostSynset.getPointers().add(newPointer);
+
             dictionary.save();
+            dictionary.close();
+            inputStream.close();
 
         }catch (FileNotFoundException e){
             e.printStackTrace();
@@ -34,11 +38,13 @@ public class DicCustomInsert {
             e.printStackTrace();
         } catch (JWNLException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public static void main(String[] args){
         DicCustomInsert dci = new DicCustomInsert();
-        dci.insertKeyword("chanel");
+        dci.insertKeyword("adidas");
     }
 }
