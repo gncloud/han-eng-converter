@@ -20,16 +20,12 @@ public class DicSearch {
         // 0 -> 검색결과 없음
         // -1 -> 사전검색 Exception
         // 1 -> 검색결과 있음
-
         try{
             FileInputStream dicInputStream = new FileInputStream("./dic/file_properties.xml");
             Dictionary dictionary = Dictionary.getInstance(dicInputStream);
             System.out.println(dictionary.getIndexWord(POS.NOUN, keyword));
-
-
             dictionary.close();
             dicInputStream.close();
-
         }catch (FileNotFoundException e){
             e.printStackTrace();
         }catch (JWNLIOException e){
