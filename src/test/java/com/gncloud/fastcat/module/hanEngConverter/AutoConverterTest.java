@@ -6,11 +6,12 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Created by swsong on 2017. 2. 16..
+ *
  */
 public class AutoConverterTest {
     @Test
     public void testAutoConvert() throws Exception{
-        DicInit.getInstance();
+//        DicInit.getInstance();
         DicSearch dicSearch = new DicSearch();
         Converter convert = new Converter();
 
@@ -49,5 +50,6 @@ public class AutoConverterTest {
         assertEquals("computer",convert.Converter("comㅔㅕㅅㄷㄱ"));
         assertEquals("computer",convert.Converter("coㅡㅔㅕㅅㄷㄱ"));
         assertEquals("computer",convert.Converter("coㅡㅔㅕㅅer"));
+
     }
 }
