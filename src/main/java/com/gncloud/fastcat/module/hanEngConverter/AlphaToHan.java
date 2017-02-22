@@ -24,10 +24,7 @@ public class AlphaToHan {
 		return convertKey;
 	}
 
-	public static void main(String[] args){
-		AlphaToHanFinal athf = new AlphaToHanFinal();
-		System.out.println(athf.alphaTohan("gkgmlgklvnalskjdf"));
-	}
+
 
 	private String makeHangul(int nCho, int nJung, int nJong){
 		String res = Character.toString((char)(0xAC00 + nCho * 21 * 28 + nJung * 28 + nJong + 1));
