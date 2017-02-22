@@ -20,7 +20,7 @@ public class DicSearch {
             IndexWord resNoun = DicInit.getInstance().dictionary.getIndexWord(POS.NOUN,keyword);
             IndexWord resAdjective = DicInit.getInstance().dictionary.getIndexWord(POS.ADJECTIVE,keyword);
             IndexWord resAdverb = DicInit.getInstance().dictionary.getIndexWord(POS.ADVERB,keyword);
-            IndexWord resVerb = DicInit.getInstance().dictionary.getIndexWord(POS.VERB,keyword);
+            IndexWord resVerb = DicInit.getInstance().dictionary.getIndexWord(POS.VERB, keyword);
             if(resNoun !=null || resVerb !=null || resAdverb !=null || resAdjective !=null){
                 return true;
             }else {
@@ -30,5 +30,4 @@ public class DicSearch {
             return false;
         }
     }
-
 }
