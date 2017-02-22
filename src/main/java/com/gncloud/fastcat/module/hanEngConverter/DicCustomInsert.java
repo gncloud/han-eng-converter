@@ -52,8 +52,4 @@ public class DicCustomInsert {
 
     }
 
-    public static void main(String[] args){
-        DicCustomInsert dci = new DicCustomInsert();
-        dci.insertKeyword("asdf");
-    }
 }

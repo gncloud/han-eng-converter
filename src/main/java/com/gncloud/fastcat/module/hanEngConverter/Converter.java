@@ -21,10 +21,7 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
             "T", "d", "w", "W", "c", "z", "x", "v", "g", "k", "o", "i", "O", "j", "p", "u", "P", "h", "hk", "ho", "hl",
             "y", "n", "nj", "np", "nl", "b", "m", "ml", "l" };
 
-    public static void main(String[] args){
-        Converter con = new Converter();
-        System.out.println(con.Converter("ㅜㅑㅏㄷ"));
-    }
+
 
     private int combineCheck(String keyword){
         // 조합 안됨 return 0;
@@ -39,7 +36,7 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
         return 1;
     }
 
-    public String Converter(String keyword){
+    public String Converter(String keyword) throws Exception{
         String convertString = "";
         String tempString = "";
         AlphaToHan ath = new AlphaToHan();
@@ -48,31 +45,39 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
 
         String convertAlpha = hta.hanToAlpha(keyword);
         String convertHan = ath.alphaTohan(keyword);
-
         String returnHan = ath.alphaTohan(convertAlpha);
 
-        int searchRes = ds.searchResultCount(convertAlpha); // 알파벳 검색
+        boolean searchRes = ds.search(convertAlpha); // 알파벳 검색
 
-        switch (searchRes){
-            case -1 :
-                convertString = "사전검색 오류";
-                break;
-            case 0 : // 매칭되는 사전 검색없음
-                if(combineCheck(returnHan) == 0){ //조합불가 글자가 포함
-                    return keyword;
-                }else{
-                    return returnHan;
-                }
-            case 1 : // 사전 검색 결과가 있음
-                if(combineCheck(convertHan) == 0){
-                    return convertAlpha;
-                }else{
-                    return convertAlpha;
-                }
-            default:
-                break;
+        if(!searchRes){
+            if(combineCheck(returnHan) == 0) { //조합불가 글자가 포함
+                return keyword;
+            }else{
+                return returnHan;
+            }
+        }else{
+            return convertAlpha;
         }
-        return convertString;
+//
+//        switch (searchRes){
+//            case -1 :
+//                convertString = "사전검색 오류";
+//                break;
+//            case 0 : // 매칭되는 사전 검색없음
+//                if(combineCheck(returnHan) == 0){ //조합불가 글자가 포함
+//                    return keyword;
+//                }else{
+//                    return returnHan;
+//                }
+//            case 1 : // 사전 검색 결과가 있음
+//                if(combineCheck(convertHan) == 0){
+//                    return convertAlpha;
+//                }else{
+//                    return convertAlpha;
+//                }
+//            default:
+//                break;
+//        return convertString;
     }
 
 }
