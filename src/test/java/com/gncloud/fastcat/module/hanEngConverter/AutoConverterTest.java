@@ -31,8 +31,19 @@ public class AutoConverterTest {
         assertEquals("nike", convert.Converter("ㅜㅑke"));
 
         assertEquals("asodkjf/asdf", convert.Converter("asodkjf/asdf"));
+        assertEquals("한글", convert.Converter("한rmf"));
 
+        assertEquals("한글", convert.Converter("하srmf"));
+        assertEquals("asodkjf/asdf", convert.Converter("asodkjf/asdf"));
+
+        assertEquals("한끌", convert.Converter("GKSRMF"));
+
+        assertEquals("CHANEL",convert.Converter("CHANEL"));
+        assertEquals("chanel",convert.Converter("초anel"));
         assertEquals("channel",convert.Converter("channel"));
+        assertEquals("channel",convert.Converter("channel"));
+
+        assertEquals("COMPUTER", convert.Converter("COMPUTER"));
         assertEquals("computer",convert.Converter("채ㅡㅔㅕㅅㄷㄱ"));
         assertEquals("computer",convert.Converter("comㅔㅕㅅㄷㄱ"));
         assertEquals("computer",convert.Converter("coㅡㅔㅕㅅㄷㄱ"));

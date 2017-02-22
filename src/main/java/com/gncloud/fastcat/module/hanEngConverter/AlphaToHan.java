@@ -8,6 +8,21 @@ public class AlphaToHan {
 	private static String CHO_DATA = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ";
 	private static String JUNG_DATA = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ";
 	private static String JONG_DATA = "ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ";
+	private static String UPKEY = "qwertop";
+
+	public String upToLow(String keyword){
+		String convertKey = "";
+		for(int i = 0; i<keyword.length();i++){
+			char compareKey = Character.toLowerCase(keyword.charAt(i));
+			if(UPKEY.indexOf(compareKey) != -1){
+				convertKey += keyword.charAt(i);
+			}else{
+				String temp = Character.toString(Character.toLowerCase(keyword.charAt(i)));
+				convertKey += temp;
+			}
+		}
+		return convertKey;
+	}
 
 	public static void main(String[] args){
 		AlphaToHanFinal athf = new AlphaToHanFinal();
@@ -19,7 +34,9 @@ public class AlphaToHan {
 		return res;
 	}
 
-	public String alphaTohan(String keyword){
+
+	public String alphaTohan(String key){
+		String keyword = upToLow(key);
 		String res = "";
 		int nCho = -1, nJung = -1, nJong = -1;
 		for(int i = 0; i<keyword.length(); i++){

@@ -49,6 +49,8 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
         String convertAlpha = hta.hanToAlpha(keyword);
         String convertHan = ath.alphaTohan(keyword);
 
+        String returnHan = ath.alphaTohan(convertAlpha);
+
         int searchRes = ds.searchResultCount(convertAlpha); // 알파벳 검색
 
         switch (searchRes){
@@ -56,10 +58,10 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
                 convertString = "사전검색 오류";
                 break;
             case 0 : // 매칭되는 사전 검색없음
-                if(combineCheck(convertHan) == 0){ //조합불가 글자가 포함
+                if(combineCheck(returnHan) == 0){ //조합불가 글자가 포함
                     return keyword;
                 }else{
-                    return convertHan;
+                    return returnHan;
                 }
             case 1 : // 사전 검색 결과가 있음
                 if(combineCheck(convertHan) == 0){
