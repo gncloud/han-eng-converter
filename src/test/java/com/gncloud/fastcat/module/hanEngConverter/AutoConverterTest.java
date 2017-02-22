@@ -21,27 +21,25 @@ public class AutoConverterTest {
         assertEquals("버버리", convert.Converter("qjqjfl"));
         assertEquals("클릭", convert.Converter("zmfflr"));
         assertEquals("사용자", convert.Converter("사용자"));
-        assertEquals("chanel", convert.Converter("초무디"));
 
         assertEquals("adidas", convert.Converter("adidas"));
         assertEquals("아디다스", convert.Converter("dkelektm"));
         assertEquals("asodkjfoaskdj", convert.Converter("asodkjfoaskdj"));
+
         assertEquals("nike",convert.Converter("nike"));
         assertEquals("nike", convert.Converter("ㅜㅑㅏㄷ"));
         assertEquals("nike", convert.Converter("ㅜㅑke"));
 
         assertEquals("asodkjf/asdf", convert.Converter("asodkjf/asdf"));
-        assertEquals("한글", convert.Converter("한rmf"));
-
-        assertEquals("한글", convert.Converter("하srmf"));
         assertEquals("asodkjf/asdf", convert.Converter("asodkjf/asdf"));
 
+        assertEquals("한글", convert.Converter("한rmf"));
+        assertEquals("한글", convert.Converter("하srmf"));
         assertEquals("한끌", convert.Converter("GKSRMF"));
 
+        assertEquals("chanel", convert.Converter("초무디"));
         assertEquals("CHANEL",convert.Converter("CHANEL"));
         assertEquals("chanel",convert.Converter("초anel"));
-        assertEquals("channel",convert.Converter("channel"));
-        assertEquals("channel",convert.Converter("channel"));
 
         assertEquals("COMPUTER", convert.Converter("COMPUTER"));
         assertEquals("computer",convert.Converter("채ㅡㅔㅕㅅㄷㄱ"));
