@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class AutoConverterTest {
     @Test
     public void testAutoConvert() throws Exception{
-//        DicInit.getInstance();
+//        DicRepository.getInstance();
         DicSearch dicSearch = new DicSearch();
         Converter convert = new Converter();
 
