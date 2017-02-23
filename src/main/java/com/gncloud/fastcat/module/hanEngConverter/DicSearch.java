@@ -24,7 +24,7 @@ public class DicSearch {
 
     public synchronized boolean search(String keyword)  {
         try {
-            String result = customNounDictionary.get(keyword);
+            String result = customNounDictionary.get(keyword.toLowerCase());
             if(result != null) {
                 return true;
             }
@@ -37,14 +37,14 @@ public class DicSearch {
                 return true;
             }
             IndexWord resAdverb =wordnetDictionary.getIndexWord(POS.ADVERB,keyword);
-            //TODO
-            IndexWord resVerb =wordnetDictionary.getIndexWord(POS.VERB, keyword);
-            //TODO
-            if(resNoun !=null || resVerb !=null || resAdverb !=null || resAdjective !=null){
+            if(resAdverb != null){
                 return true;
-            }else {
-                return false;
             }
+            IndexWord resVerb =wordnetDictionary.getIndexWord(POS.VERB, keyword);
+            if(resVerb != null){
+                return true;
+            }
+            return false;
         } catch (Exception ignore){
             return false;
         }

@@ -18,7 +18,7 @@ public class DIctionaryEditTest {
     public void addOneWord() throws Exception{
 
         String keyword = "gncloud";
-        Dictionary dictionary = DicRepository.getInstance().getWordnetDictionary();
+        Dictionary dictionary = DicRepository.getInstance("./dic/custom.noun.txt").getWordnetDictionary();
         Iterator<Synset> synsets = dictionary.getSynsetIterator(POS.NOUN);
 
         dictionary.edit();
@@ -36,7 +36,7 @@ public class DIctionaryEditTest {
     public void addOneWordWithoutSynset() throws Exception{
 
         String keyword = "gncloud2";
-        Dictionary dictionary = DicRepository.getInstance().getWordnetDictionary();
+        Dictionary dictionary = DicRepository.getInstance("./dic/custom.noun.txt").getWordnetDictionary();
 //        Iterator<Synset> synsets = dictionary.getSynsetIterator(POS.NOUN);
         dictionary.edit();
         Synset newSynset = new Synset(dictionary, POS.NOUN);

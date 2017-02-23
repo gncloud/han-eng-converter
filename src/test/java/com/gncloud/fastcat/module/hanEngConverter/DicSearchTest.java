@@ -10,7 +10,7 @@ public class DicSearchTest  {
     @Test
     public void searchDic() throws Exception{
 
-        DicSearch ds = new DicSearch();
+        DicSearch ds = new DicSearch("./dic/custom.noun.txt");
 //        assertEquals(true , ds.search("chanel"));
         assertEquals(true , ds.search("apple"));
         assertEquals(false, ds.search("asdfasdf"));

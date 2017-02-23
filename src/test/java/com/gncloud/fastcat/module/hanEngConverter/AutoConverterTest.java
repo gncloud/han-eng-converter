@@ -12,7 +12,7 @@ public class AutoConverterTest {
     @Test
     public void testAutoConvert() throws Exception{
 //        DicRepository.getInstance();
-        DicSearch dicSearch = new DicSearch();
+        DicSearch dicSearch = new DicSearch("./dic/custom.noun.txt");
         Converter convert = new Converter();
 
         assertEquals("버버리", convert.Converter("버qj리"));
@@ -40,16 +40,15 @@ public class AutoConverterTest {
         assertEquals("한끌", convert.Converter("GKSRMF"));
 
         assertEquals("샤넬", convert.Converter("tispf"));
-//        assertEquals("chanel", convert.Converter("chanel"));
-//        assertEquals("chanel", convert.Converter("초무디"));
-//        assertEquals("CHANEL",convert.Converter("CHANEL"));
-//        assertEquals("chanel",convert.Converter("초anel"));
-
+        assertEquals("chanel", convert.Converter("chanel"));
+        assertEquals("chanel", convert.Converter("초무디"));
+        assertEquals("CHANEL",convert.Converter("CHANEL"));
+        assertEquals("chanel",convert.Converter("초anel"));
+        
         assertEquals("COMPUTER", convert.Converter("COMPUTER"));
         assertEquals("computer",convert.Converter("채ㅡㅔㅕㅅㄷㄱ"));
         assertEquals("computer",convert.Converter("comㅔㅕㅅㄷㄱ"));
         assertEquals("computer",convert.Converter("coㅡㅔㅕㅅㄷㄱ"));
         assertEquals("computer",convert.Converter("coㅡㅔㅕㅅer"));
-
     }
 }

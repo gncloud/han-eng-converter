@@ -2,6 +2,9 @@ package com.gncloud.fastcat.module.hanEngConverter;
 
 import net.sf.extjwnl.dictionary.Dictionary;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -17,13 +20,12 @@ public class DicRepository {
             this.customDictionaryPath = customDictionaryPath;
             wordnetDictionary = Dictionary.getResourceInstance(WORDNET_DIC_CONF);
             customNounDictionary = new ConcurrentHashMap<String, String>();
-            //TODO customDictionaryPath 파일에서 한줄씩 읽어와서 KEYWORD 로...
-
-
-            //while(ㅇㅇㅇ) {
-                // String keyword = "";
-                //customNounDictionary.put(keyword, keyword);
-           //}
+            BufferedReader in = new BufferedReader(new FileReader(customDictionaryPath));
+            String key = "";
+            while((key = in.readLine()) !=null){
+                customNounDictionary.put(key,key);
+            }
+            in.close();
         } catch (Exception ignore) { }
     }
 

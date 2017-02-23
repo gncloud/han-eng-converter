@@ -41,7 +41,7 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
         String tempString = "";
         AlphaToHan ath = new AlphaToHan();
         HanToAlpha hta = new HanToAlpha();
-        DicSearch ds = new DicSearch();
+        DicSearch ds = new DicSearch("./dic/custom.noun.txt");
 
         String convertAlpha = hta.hanToAlpha(keyword);
         String convertHan = ath.alphaTohan(keyword);
