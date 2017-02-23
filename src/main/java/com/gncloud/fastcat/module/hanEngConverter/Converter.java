@@ -21,7 +21,11 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
             "T", "d", "w", "W", "c", "z", "x", "v", "g", "k", "o", "i", "O", "j", "p", "u", "P", "h", "hk", "ho", "hl",
             "y", "n", "nj", "np", "nl", "b", "m", "ml", "l" };
 
+    DicSearch ds;
 
+    public Converter(String path){
+        this.ds = new DicSearch(path);
+    }
 
     private boolean combineCheck(String keyword){
         AlphaToHan ath = new AlphaToHan();
@@ -34,13 +38,11 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
         return true;
     }
 
-    public String Converter(String keyword) throws Exception{
+    public String convert(String keyword) throws Exception{
         AlphaToHan ath = new AlphaToHan();
         HanToAlpha hta = new HanToAlpha();
-        DicSearch ds = new DicSearch("./dic/custom.noun.txt");
 
         String convertAlpha = hta.hanToAlpha(keyword);
-        String convertHan = ath.alphaTohan(keyword);
         String returnHan = ath.alphaTohan(convertAlpha);
 
         boolean searchRes = ds.search(convertAlpha); // 알파벳 검색
@@ -55,5 +57,4 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
             return convertAlpha;
         }
     }
-
 }

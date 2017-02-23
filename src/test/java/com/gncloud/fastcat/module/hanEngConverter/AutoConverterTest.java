@@ -13,45 +13,45 @@ public class AutoConverterTest {
     public void testAutoConvert() throws Exception{
 //        DicRepository.getInstance();
         DicSearch dicSearch = new DicSearch("./dic/custom.noun.txt");
-        Converter convert = new Converter();
+        Converter convert = new convert();
 
-        assertEquals("버버리", convert.Converter("버qj리"));
-        assertEquals("버버리", convert.Converter("qjqjfl"));
-        assertEquals("qjqjflst", convert.Converter("qjqjflst"));
-        assertEquals("버버리st", convert.Converter("버버리st"));
+        assertEquals("버버리", convert.convert("버qj리"));
+        assertEquals("버버리", convert.convert("qjqjfl"));
+        assertEquals("qjqjflst", convert.convert("qjqjflst"));
+        assertEquals("버버리st", convert.convert("버버리st"));
 
-        assertEquals("클릭", convert.Converter("zmfflr"));
-        assertEquals("사용자", convert.Converter("사용자"));
+        assertEquals("클릭", convert.convert("zmfflr"));
+        assertEquals("사용자", convert.convert("사용자"));
 
-        assertEquals("adidas", convert.Converter("adidas"));
-        assertEquals("아디다스", convert.Converter("dkelektm"));
+        assertEquals("adidas", convert.convert("adidas"));
+        assertEquals("아디다스", convert.convert("dkelektm"));
 
-        assertEquals("nike",convert.Converter("nike"));
-        assertEquals("nike", convert.Converter("ㅜㅑㅏㄷ"));
-        assertEquals("nike", convert.Converter("ㅜㅑke"));
+        assertEquals("nike",convert.convert("nike"));
+        assertEquals("nike", convert.convert("ㅜㅑㅏㄷ"));
+        assertEquals("nike", convert.convert("ㅜㅑke"));
 
-        assertEquals("asodkfj", convert.Converter("asodkfj"));
-        assertEquals("asodkjfoaskdj", convert.Converter("asodkjfoaskdj"));
-        assertEquals("asodkjf/asdf", convert.Converter("asodkjf/asdf"));
-        assertEquals("asodkjf/asdf", convert.Converter("asodkjf/asdf"));
+        assertEquals("asodkfj", convert.convert("asodkfj"));
+        assertEquals("asodkjfoaskdj", convert.convert("asodkjfoaskdj"));
+        assertEquals("asodkjf/asdf", convert.convert("asodkjf/asdf"));
+        assertEquals("asodkjf/asdf", convert.convert("asodkjf/asdf"));
 
-        assertEquals("한글", convert.Converter("한rmf"));
-        assertEquals("한글", convert.Converter("하srmf"));
-        assertEquals("한끌", convert.Converter("GKSRMF"));
+        assertEquals("한글", convert.convert("한rmf"));
+        assertEquals("한글", convert.convert("하srmf"));
+        assertEquals("한끌", convert.convert("GKSRMF"));
 
-        assertEquals("샤넬", convert.Converter("tispf"));
-        assertEquals("chanel", convert.Converter("chanel"));
-        assertEquals("chanel", convert.Converter("초무디"));
-        assertEquals("CHANEL",convert.Converter("CHANEL"));
-        assertEquals("chanel",convert.Converter("초anel"));
+        assertEquals("샤넬", convert.convert("tispf"));
+        assertEquals("chanel", convert.convert("chanel"));
+        assertEquals("chanel", convert.convert("초무디"));
+        assertEquals("CHANEL",convert.convert("CHANEL"));
+        assertEquals("chanel",convert.convert("초anel"));
 
-        assertEquals("and",convert.Converter("뭉"));
-        assertEquals("when", convert.Converter("조두"));
+        assertEquals("and",convert.convert("뭉"));
+        assertEquals("when", convert.convert("조두"));
 
-        assertEquals("COMPUTER", convert.Converter("COMPUTER"));
-        assertEquals("computer",convert.Converter("채ㅡㅔㅕㅅㄷㄱ"));
-        assertEquals("computer",convert.Converter("comㅔㅕㅅㄷㄱ"));
-        assertEquals("computer",convert.Converter("coㅡㅔㅕㅅㄷㄱ"));
-        assertEquals("computer",convert.Converter("coㅡㅔㅕㅅer"));
+        assertEquals("COMPUTER", convert.convert("COMPUTER"));
+        assertEquals("computer",convert.convert("채ㅡㅔㅕㅅㄷㄱ"));
+        assertEquals("computer",convert.convert("comㅔㅕㅅㄷㄱ"));
+        assertEquals("computer",convert.convert("coㅡㅔㅕㅅㄷㄱ"));
+        assertEquals("computer",convert.convert("coㅡㅔㅕㅅer"));
     }
 }

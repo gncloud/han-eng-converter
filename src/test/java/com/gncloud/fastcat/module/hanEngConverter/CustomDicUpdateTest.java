@@ -1,6 +1,12 @@
 package com.gncloud.fastcat.module.hanEngConverter;
 
 import org.junit.Test;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -17,5 +23,13 @@ public class CustomDicUpdateTest {
                 "Applications opened on February 13 and will close on March 13. After this date, all applications will be assessed and successful candidates will be invited to Betsson Group offices for further assessment on March 22 and 29.\n" +
                 "Please apply at www.betssongroup.com where all internship positions will appear in the jobs page under the Betsson Academy icon.";
         cdu.insertKeyword(keyword);
+
+        try{
+            File temp = File.createTempFile("tempFile",".tmp");
+            BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
+            bw.close();
+            FileReader fr = new FileReader(new File("./dic/custom.noun.txt"));
+            temp.deleteOnExit();
+        }catch (Exception ignore){ }
     }
 }

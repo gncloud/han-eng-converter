@@ -10,10 +10,10 @@ import java.util.Map;
  *
  */
 public class CustomDicUpdate {
-    private String CustomDicPath ;
     public CustomDicUpdate(String customDicPath){
         this.CustomDicPath = customDicPath;
     }
+    private String CustomDicPath ;
     private boolean combineCheck(String keyword){
         AlphaToHan ath = new AlphaToHan();
         String convertKeyword = ath.alphaTohan(keyword);
@@ -24,35 +24,36 @@ public class CustomDicUpdate {
         }
         return true;
     }
-    public static String strReplace(String str){
+    private String strReplace(String str){
         String match = "[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]";
         str =str.replaceAll(match, " ");
         return str;
     }
-    public void insertKeyword(String keyword){
-        AlphaToHan ath = new AlphaToHan();
-        DicSearch ds = new DicSearch(CustomDicPath);
-        Map<String, String> map = new HashMap<String, String>();
+    public synchronized void insertKeyword(String keyword){
 
-        String key = keyword;
-        FileWriter fw;
-        key = this.strReplace(key);
-        String[] keylist = key.split("\\s+");
-        for(String k : keylist){
-            if(this.combineCheck(ath.alphaTohan(k)) && !ds.search(k)){
-                map.put(k,k);
+            AlphaToHan ath = new AlphaToHan();
+            DicSearch ds = new DicSearch(CustomDicPath);
+            Map<String, String> map = new HashMap<String, String>();
+
+            String key = keyword;
+            FileWriter fw;
+            key = this.strReplace(key);
+            String[] keylist = key.split("\\s+");
+            for (String k : keylist) {
+                if (this.combineCheck(ath.alphaTohan(k)) && !ds.search(k)) {
+                    map.put(k, k);
+                }
             }
-        }
-        Iterator<String> iterator = map.keySet().iterator();
-        try{
-            fw = new FileWriter(CustomDicPath, true);
-            while(iterator.hasNext()){
-                String iKey = (String) iterator.next();
-                fw.write("\n"+iKey.toLowerCase());
+            Iterator<String> iterator = map.keySet().iterator();
+            try {
+                fw = new FileWriter(CustomDicPath, true);
+                while (iterator.hasNext()) {
+                    String iKey = (String) iterator.next();
+                    fw.write("\n" + iKey.toLowerCase());
+                }
+                fw.close();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            fw.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 }
