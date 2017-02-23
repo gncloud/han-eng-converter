@@ -23,22 +23,18 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
 
 
 
-    private int combineCheck(String keyword){
-        // 조합 안됨 return 0;
-        // 조합 가능 return 1;
+    private boolean combineCheck(String keyword){
         AlphaToHan ath = new AlphaToHan();
         String convertKeyword = ath.alphaTohan(keyword);
-
         for(int i = 0; i<convertKeyword.length();i++){
-            if(convertKeyword.charAt(i) < 0xAC00 || convertKeyword.charAt(i) > 0xD7AF)
-                return 0;
+            if(convertKeyword.charAt(i) < 0xAC00 || convertKeyword.charAt(i) > 0xD7AF){
+                return false;
+            }
         }
-        return 1;
+        return true;
     }
 
     public String Converter(String keyword) throws Exception{
-        String convertString = "";
-        String tempString = "";
         AlphaToHan ath = new AlphaToHan();
         HanToAlpha hta = new HanToAlpha();
         DicSearch ds = new DicSearch("./dic/custom.noun.txt");
@@ -50,34 +46,14 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
         boolean searchRes = ds.search(convertAlpha); // 알파벳 검색
 
         if(!searchRes){
-            if(combineCheck(returnHan) == 0) { //조합불가 글자가 포함
-                return keyword;
-            }else{
+            if(combineCheck(returnHan)) { //조합가능
                 return returnHan;
+            }else{
+                return keyword;
             }
         }else{
             return convertAlpha;
         }
-//
-//        switch (searchRes){
-//            case -1 :
-//                convertString = "사전검색 오류";
-//                break;
-//            case 0 : // 매칭되는 사전 검색없음
-//                if(combineCheck(returnHan) == 0){ //조합불가 글자가 포함
-//                    return keyword;
-//                }else{
-//                    return returnHan;
-//                }
-//            case 1 : // 사전 검색 결과가 있음
-//                if(combineCheck(convertHan) == 0){
-//                    return convertAlpha;
-//                }else{
-//                    return convertAlpha;
-//                }
-//            default:
-//                break;
-//        return convertString;
     }
 
 }

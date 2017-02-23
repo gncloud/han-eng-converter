@@ -44,7 +44,10 @@ public class AutoConverterTest {
         assertEquals("chanel", convert.Converter("초무디"));
         assertEquals("CHANEL",convert.Converter("CHANEL"));
         assertEquals("chanel",convert.Converter("초anel"));
-        
+
+        assertEquals("and",convert.Converter("뭉"));
+        assertEquals("when", convert.Converter("조두"));
+
         assertEquals("COMPUTER", convert.Converter("COMPUTER"));
         assertEquals("computer",convert.Converter("채ㅡㅔㅕㅅㄷㄱ"));
         assertEquals("computer",convert.Converter("comㅔㅕㅅㄷㄱ"));

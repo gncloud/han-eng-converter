@@ -18,7 +18,7 @@ import java.io.*;
 public class DicCustomInsert {
     public void insertKeyword(String keyword){
         int match = 0;
-        String filepath = "./dic/dict/custom.txt";
+        String filepath = "./dic/custom.noun.txt";
         BufferedReader in = null;
         FileWriter fw = null;
         try {
@@ -49,7 +49,5 @@ public class DicCustomInsert {
                 }
             }
         }
-
     }
-
 }
