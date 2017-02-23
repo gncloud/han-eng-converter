@@ -1,44 +1,58 @@
 package com.gncloud.fastcat.module.hanEngConverter;
 
 import java.io.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Created by gncloud on 2017-02-21.
  *
  */
 public class CustomDicUpdate {
+    private String CustomDicPath ;
+    public CustomDicUpdate(String customDicPath){
+        this.CustomDicPath = customDicPath;
+    }
+    private boolean combineCheck(String keyword){
+        AlphaToHan ath = new AlphaToHan();
+        String convertKeyword = ath.alphaTohan(keyword);
+        for(int i = 0; i<convertKeyword.length();i++){
+            if(convertKeyword.charAt(i) < 0xAC00 || convertKeyword.charAt(i) > 0xD7AF){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static String strReplace(String str){
+        String match = "[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]";
+        str =str.replaceAll(match, " ");
+        return str;
+    }
     public void insertKeyword(String keyword){
-        int match = 0;
-        String filepath = "./dic/custom.noun.txt";
-        BufferedReader in = null;
-        FileWriter fw = null;
-        try {
-            in = new BufferedReader(new FileReader(filepath));
-            String s = "";
-            while((s = in.readLine())!=null){
-                if(s.equalsIgnoreCase(keyword)){
-                    match = 1;
-                    break;
-                }
+        AlphaToHan ath = new AlphaToHan();
+        DicSearch ds = new DicSearch(CustomDicPath);
+        Map<String, String> map = new HashMap<String, String>();
+
+        String key = keyword;
+        FileWriter fw;
+        key = this.strReplace(key);
+        String[] keylist = key.split("\\s+");
+        for(String k : keylist){
+            if(this.combineCheck(ath.alphaTohan(k)) && !ds.search(k)){
+                map.put(k,k);
             }
-            in.close();
-            if(match != 1) {
-                fw = new FileWriter(filepath, true);
-                fw.write("\n"+keyword);
+        }
+        Iterator<String> iterator = map.keySet().iterator();
+        try{
+            fw = new FileWriter(CustomDicPath, true);
+            while(iterator.hasNext()){
+                String iKey = (String) iterator.next();
+                fw.write("\n"+iKey.toLowerCase());
             }
-        } catch (FileNotFoundException e) {
+            fw.close();
+        }catch (Exception e){
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if(in != null && fw !=null){
-                try {
-                    in.close();
-                    fw.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 }

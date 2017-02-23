@@ -28,7 +28,6 @@ public class DicRepository {
             in.close();
         } catch (Exception ignore) { }
     }
-
     public static synchronized DicRepository getInstance(String customDictionaryPath) {
         if (instance == null) {
             instance = new DicRepository(customDictionaryPath);
@@ -38,13 +37,10 @@ public class DicRepository {
     public Dictionary getWordnetDictionary(){
         return wordnetDictionary;
     }
-
     public Map<String, String> getCustomNounDictionary(){
         return customNounDictionary;
     }
-
     public void saveCustomNounDictionary(){
-
         ///TODO map 을 ITERATOR로 받은뒤 while로 돌면서 파일에 한줄식 쓰기. BufferedWriter. customDictionaryPath 에 ...
         ///todo TESTCASE 만들기. fILE.CREAT TMPFILE....
     }
