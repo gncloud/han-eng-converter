@@ -12,8 +12,10 @@ public class AutoConverterTest {
     @Test
     public void testAutoConvert() throws Exception{
 //        DicRepository.getInstance();
+
+        String path = "./dic/custom.noun.txt";
         DicSearch dicSearch = new DicSearch("./dic/custom.noun.txt");
-        Converter convert = new convert();
+        Converter convert = new Converter(path);
 
         assertEquals("버버리", convert.convert("버qj리"));
         assertEquals("버버리", convert.convert("qjqjfl"));
