@@ -34,7 +34,6 @@ public class DIctionaryEditTest {
 
     @Test
     public void addOneWordWithoutSynset() throws Exception{
-
         String keyword = "gncloud2";
         Dictionary dictionary = DicRepository.getInstance("./dic/custom.noun.txt").getWordnetDictionary();
 //        Iterator<Synset> synsets = dictionary.getSynsetIterator(POS.NOUN);
@@ -43,8 +42,11 @@ public class DIctionaryEditTest {
         IndexWord newWord = new IndexWord(dictionary, keyword, POS.NOUN, newSynset);
 //        dictionary.save();
         assertTrue(dictionary.getIndexWord(POS.NOUN, keyword) != null);
-
     }
 
+    @Test
+    public void addWordListWriteToFile() throws Exception{
+
+    }
 
 }

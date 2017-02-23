@@ -10,7 +10,6 @@ import java.util.Map;
  * Created by gncloud on 2017-02-16.
  *
  */
-
 public class DicSearch {
 
     private Dictionary wordnetDictionary;

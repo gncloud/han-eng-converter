@@ -1,21 +1,12 @@
 package com.gncloud.fastcat.module.hanEngConverter;
 
-
-//import net.sf.extjwnl.JWNLException;
-//import net.sf.extjwnl.JWNLIOException;
-//import net.sf.extjwnl.data.*;
-//import net.sf.extjwnl.dictionary.Dictionary;
-
 import java.io.*;
-//import java.io.FileInputStream;
-//import java.io.FileNotFoundException;
-//import java.io.IOException;
-//import java.util.Iterator;
 
 /**
  * Created by gncloud on 2017-02-21.
+ *
  */
-public class DicCustomInsert {
+public class CustomDicUpdate {
     public void insertKeyword(String keyword){
         int match = 0;
         String filepath = "./dic/custom.noun.txt";
