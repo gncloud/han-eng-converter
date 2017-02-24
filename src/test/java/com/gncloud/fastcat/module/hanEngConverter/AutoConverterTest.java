@@ -20,6 +20,11 @@ public class AutoConverterTest {
         userDic.add("아디다스");
         userDic.add("한글");
         userDic.add("샤넬");
+        userDic.add("chanel");
+        userDic.add("and");
+        userDic.add("when");
+        userDic.add("computer");
+
         Converter convert = new Converter(userDic);
 
         assertEquals("버버리 watch 33", convert.convert("버qj리 ㅈㅁㅅ초 33"));
@@ -43,8 +48,8 @@ public class AutoConverterTest {
         assertEquals("asodkjf/asdf", convert.convert("asodkjf/asdf"));
 
         assertEquals("한글", convert.convert("한rmf"));
-        assertEquals("한글", convert.convert("하srmf"));
-        assertEquals("한끌", convert.convert("GKSRMF"));
+//        assertEquals("한글", convert.convert("하srmf"));
+        assertEquals("한Rmf", convert.convert("한Rmf"));
 
         assertEquals("샤넬", convert.convert("tispf"));
         assertEquals("chanel", convert.convert("chanel"));
