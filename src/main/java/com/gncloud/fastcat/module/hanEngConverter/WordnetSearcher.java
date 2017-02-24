@@ -3,30 +3,29 @@ package com.gncloud.fastcat.module.hanEngConverter;
 
 import net.sf.extjwnl.data.*;
 import net.sf.extjwnl.dictionary.Dictionary;
+import org.fastcatsearch.ir.dictionary.SetDictionary;
 
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by gncloud on 2017-02-16.
  *
  */
-public class DicSearch {
+public class WordnetSearcher {
 
     private Dictionary wordnetDictionary;
-    private Map<String, String> customNounDictionary;
 
-    public DicSearch(String customDictPath) {
-        DicRepository repo = DicRepository.getInstance(customDictPath);
-        wordnetDictionary = repo.getWordnetDictionary();
-        customNounDictionary = repo.getCustomNounDictionary();
+    private static final String WORDNET_DIC_CONF = "/net/sf/extjwnl/data/wordnet/wn31/res_properties.xml";
+
+    public WordnetSearcher() {
+        try {
+            wordnetDictionary = Dictionary.getResourceInstance(WORDNET_DIC_CONF);
+        } catch (Exception ignore) { }
     }
 
-    public synchronized boolean search(String keyword)  {
+    public boolean search(String keyword)  {
         try {
-            String result = customNounDictionary.get(keyword.toLowerCase());
-            if(result != null) {
-                return true;
-            }
             IndexWord resNoun = wordnetDictionary.getIndexWord(POS.NOUN,keyword);
             if(resNoun != null) {
                 return true;
@@ -35,7 +34,7 @@ public class DicSearch {
             if(resAdjective != null) {
                 return true;
             }
-            IndexWord resAdverb =wordnetDictionary.getIndexWord(POS.ADVERB,keyword);
+            IndexWord resAdverb =wordnetDictionary.getIndexWord(POS.ADVERB, keyword);
             if(resAdverb != null){
                 return true;
             }

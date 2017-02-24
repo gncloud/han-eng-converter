@@ -11,13 +11,9 @@ import static org.junit.Assert.assertEquals;
 public class AutoConverterTest {
     @Test
     public void testAutoConvert() throws Exception{
-//        DicRepository.getInstance();
+        Converter convert = new Converter(null);
 
-        String path = "./dic/custom.noun.txt";
-        DicSearch dicSearch = new DicSearch("./dic/custom.noun.txt");
-        Converter convert = new Converter(path);
-
-        assertEquals("버버리", convert.convert("버qj리"));
+        assertEquals("버버리 watch", convert.convert("버qj리 ㅈㅁㅅ초      33   "));
         assertEquals("버버리", convert.convert("qjqjfl"));
         assertEquals("qjqjflst", convert.convert("qjqjflst"));
         assertEquals("버버리st", convert.convert("버버리st"));

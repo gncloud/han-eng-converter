@@ -23,7 +23,8 @@ public class AlphaToHanTest {
 //		assertEquals("rsef",atha.alphaToHanAll("rsef"));
 
 		//한글 알파벳 변환 테스트
-		assertEquals("apple",hta.hanToAlpha("메ㅔㄱㄷ"));
+		assertEquals("bu버리 자켓",hta.hanToAlpha("bu버리 자켓"));
+		assertEquals("apple",hta.hanToAlpha("메ㅔㅣㄷ"));
 		assertEquals("gksrmf",hta.hanToAlpha("한글"));
 		assertEquals("gks rmf",hta.hanToAlpha("한 글"));
 		assertEquals("rsekfk",hta.hanToAlpha("ㄱㄴ다라"));

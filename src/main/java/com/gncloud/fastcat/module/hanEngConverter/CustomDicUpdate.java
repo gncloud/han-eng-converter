@@ -32,7 +32,7 @@ public class CustomDicUpdate {
     public synchronized void insertKeyword(String keyword){
 
             AlphaToHan ath = new AlphaToHan();
-            DicSearch ds = new DicSearch(CustomDicPath);
+            WordnetSearcher ds = new WordnetSearcher();
             Map<String, String> map = new HashMap<String, String>();
 
             String key = keyword;

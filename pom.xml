@@ -4,7 +4,7 @@
 
   <groupId>com.gncloud.fastcat.module</groupId>
   <artifactId>hanEngConverter</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
   <packaging>jar</packaging>
 
   <name>module.hanEngConverter</name>
@@ -21,25 +21,6 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
-
-    <!-- https://mvnrepository.com/artifact/net.sf.jwordnet/jwnl -->
-    <!--<dependency>-->
-      <!--<groupId>net.sf.jwordnet</groupId>-->
-      <!--<artifactId>jwnl</artifactId>-->
-      <!--<version>1.4_rc3</version>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-      <!--<groupId>net.sf.extjwnl</groupId>-->
-      <!--<artifactId>extjwnl</artifactId>-->
-      <!--<version>1.9.2</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-      <!--<groupId>net.sf.extjwnl</groupId>-->
-      <!--<artifactId>extjwnl-data-wn31</artifactId>-->
-      <!--<version>1.2</version>-->
-    <!--</dependency>-->
-
     <dependency>
       <groupId>net.sf.extjwnl</groupId>
       <artifactId>extjwnl</artifactId>
@@ -50,7 +31,31 @@
       <artifactId>extjwnl-data-wn31</artifactId>
       <version>1.2</version>
     </dependency>
-
+    <dependency>
+      <groupId>co.fastcat.fastcatsearch</groupId>
+      <artifactId>fastcatsearch-core</artifactId>
+      <version>[3,4)</version>
+    </dependency>
+    <dependency>
+      <groupId>co.fastcat.fastcatsearch</groupId>
+      <artifactId>fastcatsearch-server</artifactId>
+      <version>[3,4)</version>
+    </dependency>
+    <dependency>
+      <groupId>co.fastcat.analyzer</groupId>
+      <artifactId>analyzer-product</artifactId>
+      <version>[2.21,)</version>
+    </dependency>
+    <dependency>
+      <groupId>co.fastcat.analyzer</groupId>
+      <artifactId>analyzer-korean</artifactId>
+      <version>[2,)</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.7</version>
+    </dependency>
   </dependencies>
 
   <build>
