@@ -7,29 +7,22 @@ import static org.junit.Assert.*;
 public class AlphaToHanTest {
 
 	@Test
-	public void testAlphaToHan() {
+	 public void testAlphaToHan() {
 		AlphaToHan ath = new AlphaToHan();
-		HanToAlpha hta = new HanToAlpha();
 
 		// 알파벳 한글 변환 테스트
-//		assertEquals("뷁뷁뷁뷁", ath.alphaToHan("qnpfrqnpfrqnpfrqnpfr"));
-//		assertEquals("무궁화꽃이피었습니다",ath.alphaToHan("anrndghkRhcdlvldjTtmqslek"));
-//		assertEquals("가나다라마바사", ath.alphaToHan("rkskekfkakqktk"));
-//		assertEquals("안녕 하세요", ath.alphaToHan("dkssud gktpdy"));
-//		assertEquals("까르뽀나라", ath.alphaToHan("RkfmQhskfk"));
-////		assertEquals("강남", ath.alphaToHan("ㄱ ㅏ ㅇ 나 ㅁ"));
-//		assertEquals("", ath.alphaToHan(""));
-//		assertEquals("ㄱㄴㅁㄴㅇ/ㄹ다라", ath.alphaToHan("rsasd/fekfk"));
-//		assertEquals("rsef",atha.alphaToHanAll("rsef"));
+		assertEquals("한글",ath.alphaToHan("하srmf"));
+		assertEquals("뷁뷁뷁뷁", ath.alphaToHan("qnpfrqnpfrqnpfrqnpfr"));
+		assertEquals("무궁화꽃이피었습니다",ath.alphaToHan("anrndghkRhcdlvldjTtmqslek"));
+		assertEquals("가나다라마바사", ath.alphaToHan("rkskekfkakqktk"));
+		assertEquals("안녕 하세요", ath.alphaToHan("dkssud gktpdy"));
+		assertEquals("까르뽀나라", ath.alphaToHan("RkfmQhskfk"));
+		assertEquals("ㄱ ㅏ ㅇ 나 ㅁ", ath.alphaToHan("ㄱ ㅏ ㅇ 나 ㅁ"));
+		assertEquals("", ath.alphaToHan(""));
+		assertEquals("ㄱㄴㅁㄴㅇ/ㄹ다라", ath.alphaToHan("rsasd/fekfk"));
+		assertEquals("ㄱㄴㄷㄹ",ath.alphaToHan("rsef"));
 
-		//한글 알파벳 변환 테스트
-		assertEquals("bu버리 자켓",hta.hanToAlpha("bu버리 자켓"));
-		assertEquals("apple",hta.hanToAlpha("메ㅔㅣㄷ"));
-		assertEquals("gksrmf",hta.hanToAlpha("한글"));
-		assertEquals("gks rmf",hta.hanToAlpha("한 글"));
-		assertEquals("rsekfk",hta.hanToAlpha("ㄱㄴ다라"));
-		assertEquals("rs ekfk",hta.hanToAlpha("ㄱㄴ 다라"));
-//		assertEquals("rsasd/fekfk",hta.hanToAlpha("ㄱㄴasd/f다라"));
-//		assertEquals("rfxefgkgkssef",hta.hanToAlpha("ㄱㄾㄷㄹ하하ㄴㄴㄷㄹ"));
 	}
+
+
 }

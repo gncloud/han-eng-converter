@@ -2,6 +2,9 @@ package com.gncloud.fastcat.module.hanEngConverter;
 
 import org.junit.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -11,9 +14,15 @@ import static org.junit.Assert.assertEquals;
 public class AutoConverterTest {
     @Test
     public void testAutoConvert() throws Exception{
-        Converter convert = new Converter(null);
+        Set<String> userDic = new HashSet<String>();
+        userDic.add("버버리");
+        userDic.add("클릭");
+        userDic.add("아디다스");
+        userDic.add("한글");
+        userDic.add("샤넬");
+        Converter convert = new Converter(userDic);
 
-        assertEquals("버버리 watch", convert.convert("버qj리 ㅈㅁㅅ초      33   "));
+        assertEquals("버버리 watch 33", convert.convert("버qj리 ㅈㅁㅅ초 33"));
         assertEquals("버버리", convert.convert("qjqjfl"));
         assertEquals("qjqjflst", convert.convert("qjqjflst"));
         assertEquals("버버리st", convert.convert("버버리st"));
