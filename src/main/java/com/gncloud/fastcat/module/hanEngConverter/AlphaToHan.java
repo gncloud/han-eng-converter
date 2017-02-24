@@ -27,8 +27,9 @@ public class AlphaToHan {
 	private String combineHan(String word){
 		String temp = "";
 		//todo i 문자가 완성형이면서 종성이 붙을 수 있는 문자다
-		//todo i+1 문자가 종성이 될 수 있는지 체크 or 초성이지만 종성인가?
-		//todo i+2 문자가 중성이면 i+1은 초성이다.
+		//todo i+1 문자가 종성이 될 수 있는지 체크 ( && i+1<= word.length ) 
+		//todo i+2 문자가 중성이면 i+1은 초성이다. (&& 초성으로 올 수 있는 자음 ) && i+2 <= word.length
+		//todo
 		return word;
 	}
 
