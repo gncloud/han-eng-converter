@@ -3,14 +3,14 @@ package com.gncloud.fastcat.module.hanEngConverter;
 
 public class AlphaToHan {
 
-	private static String ENG_KEY = "rRseEfaqQtTdwWczxvgkoiOjpuPhynbml";
-	private static String KOR_KEY = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠㅡㅣ";
-	private static String CHO_DATA = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ";
+	private static String ENG_KEY =   "rRseEfaqQtTdwWczxvgkoiOjpuPhynbml";
+	private static String KOR_KEY =   "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠㅡㅣ";
+	private static String CHO_DATA =  "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ";
 	private static String JUNG_DATA = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ";
 	private static String JONG_DATA = "ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ";
 	private static String UPKEY = "qwertop";
 
-	public String upToLow(String keyword){
+	private String upToLow(String keyword){
 		String convertKey = "";
 		for(int i = 0; i<keyword.length();i++){
 			char compareKey = Character.toLowerCase(keyword.charAt(i));
@@ -24,7 +24,13 @@ public class AlphaToHan {
 		return convertKey;
 	}
 
-
+	private String combineHan(String word){
+		String temp = "";
+		//todo i 문자가 완성형이면서 종성이 붙을 수 있는 문자다
+		//todo i+1 문자가 종성이 될 수 있는지 체크 or 초성이지만 종성인가?
+		//todo i+2 문자가 중성이면 i+1은 초성이다.
+		return word;
+	}
 
 	private String makeHangul(int nCho, int nJung, int nJong){
 		String res = Character.toString((char)(0xAC00 + nCho * 21 * 28 + nJung * 28 + nJong + 1));
