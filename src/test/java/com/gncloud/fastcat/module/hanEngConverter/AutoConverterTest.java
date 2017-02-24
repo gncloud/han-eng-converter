@@ -25,7 +25,7 @@ public class AutoConverterTest {
         userDic.add("when");
         userDic.add("computer");
 
-        Converter convert = new Converter(userDic);
+        AutoConverter convert = new AutoConverter(userDic);
 
         assertEquals("버버리 watch 33", convert.convert("버qj리 ㅈㅁㅅ초 33"));
         assertEquals("버버리", convert.convert("qjqjfl"));

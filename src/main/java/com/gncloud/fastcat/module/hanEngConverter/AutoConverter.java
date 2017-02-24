@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * Created by gncloud on 2017-02-17.
  */
-public class Converter { //입력된 랜덤한 스트링을 최적의 검색결과로 전달 해주는 클래스
+public class AutoConverter { //입력된 랜덤한 스트링을 최적의 검색결과로 전달 해주는 클래스
 
     private static final String USER_DICTIONARY_NAME = "user";
 
@@ -17,15 +17,15 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
     private CommonDictionary commonDictionary;
     private Set<String> testDictionary;
 
-    public Converter() {
+    public AutoConverter() {
         this.wordnetSearcher = new WordnetSearcher();
     }
-    public Converter(CommonDictionary commonDictionary) {
+    public AutoConverter(CommonDictionary commonDictionary) {
         this.wordnetSearcher = new WordnetSearcher();
         this.commonDictionary = commonDictionary;
     }
 
-    public Converter(Set<String> testDictionary) {
+    public AutoConverter(Set<String> testDictionary) {
         this.wordnetSearcher = new WordnetSearcher();
         this.testDictionary = testDictionary;
     }
