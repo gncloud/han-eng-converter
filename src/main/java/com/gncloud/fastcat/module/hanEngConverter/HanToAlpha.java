@@ -33,7 +33,7 @@ public class HanToAlpha {
 				convertString += " ";
 			}else if((int) hanChar >= 0x3131 && (int) hanChar <= 0x3163){
 				int han = (int) hanChar - 0x3131;
-				convertString += CONVERTKEY[han % 50];
+				convertString += CONVERTKEY[han % 51];
 			}else{
 				String ch = Character.toString(hanChar);
 				convertString += ch;
