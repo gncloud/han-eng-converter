@@ -9,9 +9,17 @@ public class HanToAlpha {
 			"ft", "fx", "fv", "fg", "a", "q", "qt", "t", "T", "d", "w", "c", "z", "x", "v", "g" };
 
 	private static final String[] CONVERTKEY = {
-			"r","R","rt","s","sw","sg","e","E","f","fr", "fa", "fq", "ft", "fx", "fv", "fg", "a", "q", "Q", "qt", "t",
-			"T", "d", "w", "W", "c", "z", "x", "v", "g", "k", "o", "i", "O", "j", "p", "u", "P", "h", "hk", "ho", "hl",
-			"y", "n", "nj", "np", "nl", "b", "m", "ml", "l" };
+			"r" ,  "R",  "rt",  "s", "sw",
+			"sg",  "e",   "E",  "f", "fr",
+			"fa", "fq",  "ft", "fx", "fv",
+			"fg",  "a",   "q",  "Q", "qt",
+			"t",   "T",   "d",  "w",  "W",
+			"c",   "z",   "x",  "v",  "g",
+			"k",   "o",   "i",  "O",  "j",
+			"p",   "u",   "P",  "h", "hk",
+			"ho", "hl",	  "y",  "n", "nj",
+			"np", "nl",   "b",  "m", "ml",
+			"l" };
 
 	public String hanToAlpha(String hanString){
 		String convertString = "";
