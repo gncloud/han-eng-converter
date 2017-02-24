@@ -16,7 +16,7 @@ public class CustomDicUpdate {
     private String CustomDicPath ;
     private boolean combineCheck(String keyword){
         AlphaToHan ath = new AlphaToHan();
-        String convertKeyword = ath.alphaTohan(keyword);
+        String convertKeyword = ath.alphaToHan(keyword);
         for(int i = 0; i<convertKeyword.length();i++){
             if(convertKeyword.charAt(i) < 0xAC00 || convertKeyword.charAt(i) > 0xD7AF){
                 return false;
@@ -40,7 +40,7 @@ public class CustomDicUpdate {
             key = this.strReplace(key);
             String[] keylist = key.split("\\s+");
             for (String k : keylist) {
-                if (this.combineCheck(ath.alphaTohan(k)) && !ds.search(k)) {
+                if (this.combineCheck(ath.alphaToHan(k)) && !ds.search(k)) {
                     map.put(k, k);
                 }
             }

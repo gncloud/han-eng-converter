@@ -32,7 +32,7 @@ public class AlphaToHan {
 	}
 
 
-	public String alphaTohan(String key){
+	public String alphaToHan(String key){
 		String keyword = upToLow(key);
 		String res = "";
 		int nCho = -1, nJung = -1, nJong = -1;
