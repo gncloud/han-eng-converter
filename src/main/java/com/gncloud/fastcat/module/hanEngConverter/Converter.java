@@ -11,6 +11,8 @@ import java.util.Set;
  */
 public class Converter { //입력된 랜덤한 스트링을 최적의 검색결과로 전달 해주는 클래스
 
+    private static final String USER_DICTIONARY_NAME = "user";
+
     private WordnetSearcher wordnetSearcher;
     private CommonDictionary commonDictionary;
     private Set<String> testDictionary;
@@ -82,10 +84,11 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
         } else {
             if(commonDictionary != null) {
                 CharVector term = new CharVector(word);
+                term.setIgnoreCase(); //대소문자구분 안함.
                 if(commonDictionary.find(term) != null) {
                     return true;
                 } else {
-                    SetDictionary dic = (SetDictionary) commonDictionary.getDictionary("user");
+                    SetDictionary dic = (SetDictionary) commonDictionary.getDictionary(USER_DICTIONARY_NAME);
                     if(dic != null) {
                         return dic.set().contains(term);
                     }
