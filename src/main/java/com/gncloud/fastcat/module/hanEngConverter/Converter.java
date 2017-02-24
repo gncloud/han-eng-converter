@@ -4,6 +4,8 @@ import org.fastcatsearch.ir.dic.CommonDictionary;
 import org.fastcatsearch.ir.dictionary.SetDictionary;
 import org.fastcatsearch.ir.io.CharVector;
 
+import java.util.Set;
+
 /**
  * Created by gncloud on 2017-02-17.
  */
@@ -11,12 +13,20 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
 
     private WordnetSearcher wordnetSearcher;
     private CommonDictionary commonDictionary;
+    private Set<String> testDictionary;
 
+    public Converter() {
+        this.wordnetSearcher = new WordnetSearcher();
+    }
     public Converter(CommonDictionary commonDictionary) {
         this.wordnetSearcher = new WordnetSearcher();
         this.commonDictionary = commonDictionary;
     }
 
+    public Converter(Set<String> testDictionary) {
+        this.wordnetSearcher = new WordnetSearcher();
+        this.testDictionary = testDictionary;
+    }
 //    private boolean isAllHangul(String word) {
 //        for (int i = 0; i < word.length(); i++) {
 //            if (word.charAt(i) < 0xAC00 || word.charAt(i) > 0xD7AF) {
@@ -47,7 +57,7 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
                     }
                     sb.append(english);
                 } else {
-                    String hangul = ath.alphaTohan(word);
+                    String hangul = ath.alphaToHan(word);
                     if (foundInDictionary(hangul)) {
                         if(sb.length() > 0) {
                             sb.append(" ");
@@ -69,15 +79,20 @@ public class Converter { //입력된 랜덤한 스트링을 최적의 검색결�
     private boolean foundInDictionary(String word) {
         if(wordnetSearcher.search(word)){
             return true;
-        } else if(commonDictionary != null) {
-            CharVector term = new CharVector(word);
-            if(commonDictionary.find(term) != null) {
-                return true;
-            } else {
-                SetDictionary dic = (SetDictionary) commonDictionary.getDictionary("user");
-                if(dic != null) {
-                    return dic.set().contains(term);
+        } else {
+            if(commonDictionary != null) {
+                CharVector term = new CharVector(word);
+                if(commonDictionary.find(term) != null) {
+                    return true;
+                } else {
+                    SetDictionary dic = (SetDictionary) commonDictionary.getDictionary("user");
+                    if(dic != null) {
+                        return dic.set().contains(term);
+                    }
                 }
+            }
+            if(testDictionary != null) {
+                return testDictionary.contains(word);
             }
         }
         return false;
