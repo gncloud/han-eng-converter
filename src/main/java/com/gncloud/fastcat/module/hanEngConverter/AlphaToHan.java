@@ -350,12 +350,4 @@ public class AlphaToHan {
 		return combineHan(res);
 	}
 
-	public static void main(String[] args){
-		AlphaToHan ath = new AlphaToHan();
-		System.out.println(ath.alphaTohan("gkㄴ그ㄹ"));
-		System.out.println(ath.alphaTohan("ㅎkㄴ그ㄹ"));
-		System.out.println(ath.alphaTohan("gkㄴ그ㄹ"));
-		System.out.println(ath.alphaTohan("ㅇml그ㄹr"));
-		System.out.println(ath.alphaTohan("gkㄴ그ㄹ"));
-	}
 }
