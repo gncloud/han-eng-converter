@@ -1,3 +1,4 @@
+package com.gncloud.fastcat.module.hanEngConverter;
 
 public class AlphaToHan {
 
@@ -28,122 +29,11 @@ public class AlphaToHan {
 		return res;
 	}
 
-	private int getDoubleJong(char a, char b){
-		int ja1 = KOR_KEY.indexOf(a);
-		int ja2 = KOR_KEY.indexOf(b);
-		if(ja1 == 0 && ja2 == 18){
-			return 2;
-		}else if(ja1 == 3 && ja2 == 9){
-			return 2;
-		}else if(ja1 == 2 && ja2 == 12){
-			return 4;
-		}else if(ja1 == 2 && ja2 == 18){
-			return 5;
-		}else if(ja1 == 5 && ja2 == 0){
-			return 8;
-		}else if(ja1 == 5 && ja2 == 6){
-			return 9;
-		}else if(ja1 == 5 && ja2 == 7){
-			return 10;
-		}else if(ja1 == 5 && ja2 == 9){
-			return 11;
-		}else if(ja1 == 5 && ja2 == 16){
-			return 12;
-		}else if(ja1 == 5 && ja2 == 17){
-			return 13;
-		}else if(ja1 == 5 && ja2 == 18){
-			return 14;
-		}else if(ja1 == 7 && ja2 == 9){
-			return 17;
-		}else{
-			return 0;
-		}
-	}
-
-	private int getDoubleJung(char a, char b){
-		int mo1 = JUNG_DATA.indexOf(a);
-		int mo2 = JUNG_DATA.indexOf(b);
-		if(mo1 == 8 && mo2 == 0){
-			return 9; // ㅘ
-		}else if(mo1 == 8 && mo2 ==1){
-			return 10;
-		}else if(mo1 == 8 && mo2 ==20){
-			return 19;
-		}else if(mo1 == 13 && mo2 == 4) {
-			return 14;
-		}else if(mo1 == 13 && mo2 == 5) {
-			return 15;
-		}else if(mo1 == 13 && mo2 == 20) {
-			return 16;
-		}else if(mo1 == 18 && mo2 == 21) {
-			return 20;
-		}else{
-			return 0;
-		}
-	}
-
-	private String combineHan(String word){
-		String temp = "";
-		StringBuffer sb = new StringBuffer();
-		for(int i = 0; i < word.length();i++){
-			char ch = word.charAt(i);
-			if(ch >= 0xAC00 && ch <= 0xD7AF && (0xAC00 - ch)%28 == 0){ // 종성으로 올 수 있는 한글이다
-				if(i+1 < word.length()){ //&& JONG_DATA.indexOf(ch) != -1
-					if(JONG_DATA.indexOf(word.charAt(i+1)) != -1){
-						int jon = JONG_DATA.indexOf(word.charAt(i+1));
-						sb.append((char) (ch + jon +1));
-						i++;
-					}else{
-						sb.append(ch);
-					}
-				}else{
-					sb.append(ch);
-				}
-			}else if(CHO_DATA.indexOf(word.charAt(i)) != -1){ // 단순 초성
-
-				if(i+1 <= word.length()){
-					if(JUNG_DATA.indexOf(word.charAt(i+1)) != -1){
-						if(i+2 <word.length()){
-							if(JONG_DATA.indexOf(word.charAt(i+2)) != -1){
-								char combine = (char) (0xAC00 +
-										CHO_DATA.indexOf((word.charAt(i))) * 28 * 21 +
-										JUNG_DATA.indexOf((word.charAt(i+1)) * 28 ) +
-										JONG_DATA.indexOf((word.charAt(i+2) + 2 )));
-								sb.append(combine);
-								i += 2;
-							}else if(word.charAt(i+2) >= 0xAC00 && word.charAt(i+2) <= 0xD7AF){
-								char combine = (char) (0xAC00 +
-										CHO_DATA.indexOf((word.charAt(i))) * 28 * 21 +
-										JUNG_DATA.indexOf((word.charAt(i+1)) * 28 ) +1);
-								sb.append(combine);
-								i++;
-							}else{
-								sb.append(ch);
-							}
-						}else{
-							char combine = (char) (0xAC00 +
-									CHO_DATA.indexOf((word.charAt(i))) * 28 * 21 +
-									JUNG_DATA.indexOf((word.charAt(i+1)) * 28 ));
-							sb.append(combine);
-							i++;
-						}
-					}else{
-						sb.append(ch);
-					}
-				}else{
-					sb.append(ch);
-				}
-			}else{
-				sb.append(ch);
-			}
-		}
-		return sb.toString();
-	}
-
-
 	public String alphaTohan(String key){
-		String keyword = upToLow(key);
+//		String keyword = upToLow(key);
 		String res = "";
+		HanToAlpha hta = new HanToAlpha();
+		String keyword = hta.hanToAlpha(key);
 		int nCho = -1, nJung = -1, nJong = -1;
 		for(int i = 0; i<keyword.length(); i++){
 			char ch = keyword.charAt(i);
@@ -347,7 +237,7 @@ public class AlphaToHan {
 		}
 
 
-		return combineHan(res);
+		return res;
 	}
 
 }
