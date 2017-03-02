@@ -29,7 +29,7 @@ public class AlphaToHan {
 		return res;
 	}
 
-	public String alphaTohan(String key){
+	public String alphaToHan(String key){
 //		String keyword = upToLow(key);
 		String res = "";
 		HanToAlpha hta = new HanToAlpha();
