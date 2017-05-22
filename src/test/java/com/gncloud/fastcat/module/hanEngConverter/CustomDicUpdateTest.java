@@ -24,12 +24,13 @@ public class CustomDicUpdateTest {
                 "Please apply at www.betssongroup.com where all internship positions will appear in the jobs page under the Betsson Academy icon.";
         cdu.insertKeyword(keyword);
 
-        try{
+        try {
             File temp = File.createTempFile("tempFile",".tmp");
             BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
             bw.close();
             FileReader fr = new FileReader(new File("./dic/custom.noun.txt"));
             temp.deleteOnExit();
-        }catch (Exception ignore){ }
+        } catch (Exception ignore) {
+        }
     }
 }
